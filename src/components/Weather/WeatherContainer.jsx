@@ -19,8 +19,8 @@ class WeatherAPIComponent extends React.Component {
     }
 
     render() {
-        return <>
-            <Weather onCityChanged={this.onCityChanged} {...this.props} />
+         return <>
+            <Weather onCityChanged={this.onCityChanged} {...this.props}  />
         </>
     }
 }
@@ -28,8 +28,9 @@ class WeatherAPIComponent extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        cityName: state.cityName,
-        town: state.cityName.town
+       data: state.data.data,
+       town: state.data.town,
+        
     }
 };
 const mapDispatchToProps = (dispatch) => {
