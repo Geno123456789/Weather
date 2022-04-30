@@ -1,15 +1,16 @@
 import { applyMiddleware, combineReducers, legacy_createStore } from "redux";
-import mainReducer from "./main-reducer";
 import thunkMiddleware from 'redux-thunk';
+import  weatherReducer from "./test-reducer";
 
 
 const reducers = combineReducers({
-    cityName: mainReducer
+    tests:  weatherReducer
     
 })
 
 const store = legacy_createStore(reducers,applyMiddleware(thunkMiddleware));
 
+window.store=store
 
 export default store;
 
