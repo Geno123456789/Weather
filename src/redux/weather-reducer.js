@@ -24,15 +24,15 @@ const weatherReducer = (state = initialState, action) => {
     
 }
 
-export const sendButtonAC = (town) => ({ type: SEND_BUTTON, town});
+export const addCityName = (town) => ({ type: SEND_BUTTON, town});
 
 export const getWeatherCity = (town) => {
     
     return async (dispatch) => {
-         dispatch(sendButtonAC(town));
+         dispatch(addCityName(town));
         const data = await weatherApi.getCityName(town);
         // console.log(data);
-        dispatch(sendButtonAC(data.data.name));
+        dispatch(addCityName(data.data.name));
         
     }
     

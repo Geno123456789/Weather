@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { getWeatherCity, sendButtonAC } from "../../redux/test-reducer";
+import { getWeatherCity, addCityName } from "../../redux/weather-reducer";
 import Weather from "./Weather";
 
 
@@ -28,13 +28,13 @@ class WeatherAPIComponent extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        tests: state.tests,
-        town: state.tests.town
+        cityName: state.cityName,
+        town: state.cityName.town
     }
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        sendCityTest: (town) => { dispatch(sendButtonAC(town)) },
+        addCityName: (town) => { dispatch(addCityName(town)) },
         getWeatherCity: (town) => { dispatch(getWeatherCity(town)) }
     }
 }

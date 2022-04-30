@@ -1,10 +1,10 @@
 import { applyMiddleware, combineReducers, legacy_createStore } from "redux";
 import thunkMiddleware from 'redux-thunk';
-import  weatherReducer from "./test-reducer";
+import  weatherReducer from "./weather-reducer";
 
 
 const reducers = combineReducers({
-    tests:  weatherReducer
+    cityName:  weatherReducer
     
 })
 
