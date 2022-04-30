@@ -13,9 +13,9 @@ console.log(props)
     }
     return (
         <div>
-            <p onClick={onChangedClick}>{props.cityName.town}</p>
             <input ref={myRef} type='text' placeholder='City' onChange={onSearchClick} />
             <button onClick={onChangedClick} >search</button>
+            <div>{props.cityName.town}</div>
         </div>
     )
 }
