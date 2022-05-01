@@ -3,14 +3,16 @@ import WeatherData from "../WeatherData/WeatherData";
 import style from './Weather.module.css'
 
 const Weather = (props) => {
-    console.log(props)
+    // console.log(props)
     const myRef = useRef(null)
+    
     const onSearchClick = () => {
         const town = myRef.current.value;
-        props.addCityName(town)
+        props.addCityName(town);
     };
     const onChangedClick = () => {
-        props.onCityChanged(props.town)
+        props.onCityChanged(props.town);
+        myRef.current.value = '';
     }
     return (
         <div>
