@@ -19,7 +19,8 @@ const Weather = (props) => {
                 <button onClick={onChangedClick} >search</button>
             </div>
             <div>
-                {props.data && <div><WeatherData city={props.data.name} temp={props.data.main.temp} pressure={props.data.main.pressure} windSpeed={props.data.wind.speed} condition={props.data.weather[0].main} /></div>}
+                {props.data && <div><WeatherData city={props.data.name} temp={props.data.main.temp} pressure={props.data.main.pressure} 
+                windSpeed={props.data.wind.speed} condition={props.data.weather[0].main} feels_like={props.data.main.feels_like} clouds={props.data.clouds.all} /></div>}
             </div>
         </div>
     )

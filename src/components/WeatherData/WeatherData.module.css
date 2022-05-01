@@ -3,4 +3,37 @@
     text-transform: uppercase;
     font-weight: bold;
     margin-right: 70%;
+    margin-bottom: 50px;
+}
+
+.condition, .temp, .weatherData {
+    width: 30%;
+}
+.data {
+    display: flex;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.condition img {
+    margin: 0 auto;
+    padding: 20px;
+    width: 50%;
+}
+.condition p {
+    font-size: 25px;
+}
+.temp {
+    align-self: center;
+    font-size: 150px;
+}
+.weatherData {
+    align-self: center;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 5%;
+}
+.weatherData div {
+    margin-bottom: 10px;
 }
