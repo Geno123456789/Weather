@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import WeatherData from "../WeatherData/WeatherData";
+import Forecast from "./Forecast";
 import style from './Weather.module.css'
 
 const Weather = (props) => {
@@ -23,6 +24,9 @@ const Weather = (props) => {
             <div>
                 {props.data && <div><WeatherData city={props.data.name} temp={props.data.main.temp} pressure={props.data.main.pressure} 
                 windSpeed={props.data.wind.speed} condition={props.data.weather[0].main} feels_like={props.data.main.feels_like} clouds={props.data.clouds.all} /></div>}
+            </div>
+            <div>
+                {props.forecast && <div><Forecast forecast={props.forecast} /></div>}
             </div>
         </div>
     )
