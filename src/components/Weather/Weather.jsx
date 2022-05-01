@@ -1,6 +1,6 @@
 import { useRef } from "react";
-import WeatherData from "./WeatherData";
-
+import WeatherData from "../WeatherData/WeatherData";
+import style from './Weather.module.css'
 
 const Weather = (props) => {
     console.log(props)
@@ -14,7 +14,7 @@ const Weather = (props) => {
     }
     return (
         <div>
-            <div>
+            <div className={style.inputBlock}>
                 <input ref={myRef} type='text' placeholder='City' onChange={onSearchClick} />
                 <button onClick={onChangedClick} >search</button>
             </div>
