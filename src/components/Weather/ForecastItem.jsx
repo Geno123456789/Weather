@@ -1,5 +1,3 @@
-import style from './WeatherData.module.css'
-
 import cloudy_day from '../../assets/img/cloudy_day.png';
 import thunder from '../../assets/img/thunder.png';
 import drizzle from '../../assets/img/drizzle.png';
@@ -8,8 +6,13 @@ import snow from '../../assets/img/snowy.png';
 import sunny from '../../assets/img/sunny.png';
 import noData from '../../assets/img/no-data-icon.jpg'
 
-const WeatherData = (props) => {
-    console.log(props)
+const ForecastItem = (props) => {
+
+    function timestampToDate(ts) {
+        let d = new Date();
+        d.setTime(ts);
+        return ('0' + d.getDate()).slice(-2) + '.' + ('0' + (d.getMonth() + 1)).slice(-2) + '.' + d.getFullYear();
+    }
     let img;
     switch (props.condition) {
         case "Clouds":
@@ -41,26 +44,18 @@ const WeatherData = (props) => {
             break;
     }
 
-
     return (
         <div>
-            <div className={style.cityName}>{props.city}</div>
-            <div className={style.data}>
-                <div className={style.condition}>
+            <div>
+                {timestampToDate(props.day * 1000)}
+                <div>
                     <img src={img} alt="" />
-                    <p>{props.condition}</p>
+                    {props.condition}
                 </div>
-                <div className={style.temp}>{Math.round(props.temp) + '°C'}</div>
-                <div className={style.weatherData}>
-                    <div>Feels Like: {Math.round(props.feels_like) + '°C'}</div>
-                    <div>Clouds: {props.clouds + ' %'}</div>
-                    <div>Pressure: {props.pressure + ' hPa'}</div>
-                    <div>Wind: {props.windSpeed + ' km/h'}</div>
-                </div>
+                {Math.round(props.temp) + '°C'}
             </div>
-         
         </div>
     )
 }
 
-export default WeatherData;
+export default ForecastItem;
