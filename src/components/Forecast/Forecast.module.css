@@ -1,0 +1,31 @@
+.forecastContainer {
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    justify-content: space-between;
+}
+.item {
+    border: 2px solid white;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.day{
+    font-size: 40px;
+    padding: 10px 40px;
+    
+}
+.condition{
+    font-size: 30px;
+    margin: 20px;
+    height: 200px;
+}
+.condition img {
+    margin: 0 auto;
+    padding: 20px;
+    width: 70%;
+}
+.temp {
+    font-size: 50px;
+}

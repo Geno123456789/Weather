@@ -4,27 +4,19 @@ import { compose } from "redux";
 import { getWeatherCity, addCityName, setForecast } from "../../redux/weather-reducer";
 import Weather from "./Weather";
 
-
-
 class WeatherAPIComponent extends React.Component {
 
     componentDidMount() {
-
         this.props.getWeatherCity(this.props.town);
-        // this.props.getForecast(this.props.forecast);
-        
     }
 
     onCityChanged = (town) => {
         this.props.getWeatherCity(town, this.props.town);
-        // this.props.getForecast(this.props.forecast);
-       
     }
 
     render() {
-        
-         return <>
-            <Weather onCityChanged={this.onCityChanged} {...this.props}  />
+        return <>
+            <Weather onCityChanged={this.onCityChanged} {...this.props} />
         </>
     }
 }
@@ -32,21 +24,18 @@ class WeatherAPIComponent extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-       data: state.data.data,
-       town: state.data.town,
-       forecast: state.data.forecast
+        data: state.data.data,
+        town: state.data.town,
+        forecast: state.data.forecast
     }
 };
 const mapDispatchToProps = (dispatch) => {
     return {
         addCityName: (town) => { dispatch(addCityName(town)) },
         getWeatherCity: (town) => { dispatch(getWeatherCity(town)) },
-        getForecastForWeek: (forecast) => { dispatch(setForecast(forecast))}
+        getForecastForWeek: (forecast) => { dispatch(setForecast(forecast)) }
     }
 }
-
-
-
 
 const WeatherContainer = compose(connect(mapStateToProps, mapDispatchToProps))(WeatherAPIComponent);
 

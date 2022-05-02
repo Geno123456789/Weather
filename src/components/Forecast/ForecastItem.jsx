@@ -1,3 +1,4 @@
+import style from './Forecast.module.css'
 import cloudy_day from '../../assets/img/cloudy_day.png';
 import thunder from '../../assets/img/thunder.png';
 import drizzle from '../../assets/img/drizzle.png';
@@ -46,13 +47,13 @@ const ForecastItem = (props) => {
 
     return (
         <div>
-            <div>
-                {timestampToDate(props.day * 1000)}
-                <div>
+            <div className={style.item}>
+                <p className={style.day}>{timestampToDate(props.day * 1000)}</p>
+                <div className={style.condition}>
+                    <div>{props.condition}</div>
                     <img src={img} alt="" />
-                    {props.condition}
                 </div>
-                {Math.round(props.temp) + '°C'}
+                <p className={style.temp}>{Math.round(props.temp) + '°C'}</p>
             </div>
         </div>
     )
