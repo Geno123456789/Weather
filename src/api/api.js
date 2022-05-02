@@ -10,7 +10,6 @@ export const weatherApi = {
     },
     forWeekForecast(town = 'Minsk'){
         return instance.get(`forecast?q=${town}&units=metric&appid=f570f866ddbd1afb342a8cb2799dcf38`)
-        // .then( res => res.data.list ) 
     }
 }
 
