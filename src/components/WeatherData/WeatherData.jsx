@@ -9,7 +9,7 @@ import sunny from '../../assets/img/sunny.png';
 import noData from '../../assets/img/no-data-icon.jpg'
 
 const WeatherData = (props) => {
-    console.log(props)
+
     let img;
     switch (props.condition) {
         case "Clouds":

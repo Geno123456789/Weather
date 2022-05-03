@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { getWeatherCity, addCityName, setForecast } from "../../redux/weather-reducer";
+import Preloader from "../Preloader/Preloader";
 import Weather from "./Weather";
 
 class WeatherAPIComponent extends React.Component {
@@ -13,9 +14,10 @@ class WeatherAPIComponent extends React.Component {
     onCityChanged = (town) => {
         this.props.getWeatherCity(town, this.props.town);
     }
-
+    
     render() {
         return <>
+            {!this.props ? <Preloader /> : null}
             <Weather onCityChanged={this.onCityChanged} {...this.props} />
         </>
     }

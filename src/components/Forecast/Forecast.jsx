@@ -9,7 +9,7 @@ const Forecast = (props) => {
     const days_txt_data = days_txt.map(elem => new Date(elem).toLocaleString().slice(0, 10))
     const days_txt_data_filtered = days_txt_data.filter(item => item === txtData)
     const updateWeatherCurrent = days_txt_data_filtered.length;
-    const updateWeatherNextDay = updateWeatherCurrent + 4;
+    const updateWeatherNextDay = updateWeatherCurrent + 3;
 
     return (
         <div>
@@ -25,9 +25,6 @@ const Forecast = (props) => {
                 </div>
                 <div>
                     <ForecastItem day={props.forecast[updateWeatherNextDay + 24].dt} condition={props.forecast[updateWeatherNextDay + 24].weather[0].main} temp={props.forecast[updateWeatherNextDay + 24].main.temp} />
-                </div>
-                <div>
-                    <ForecastItem day={props.forecast[updateWeatherNextDay + 32].dt} condition={props.forecast[updateWeatherNextDay + 32].weather[0].main} temp={props.forecast[updateWeatherNextDay + 32].main.temp} />
                 </div>
             </div>
         </div>
