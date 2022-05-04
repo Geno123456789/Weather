@@ -1,7 +1,8 @@
-import loader from '../../assets/loader.gif'
+import loader from '../../assets/loader.gif';
+import style from './Preloader.module.css'
 
 const Preloader = ()=> {
-    return <div>
+    return <div className={style.loader}>
     <img src={loader} alt='preloader' />
     </div>
 }

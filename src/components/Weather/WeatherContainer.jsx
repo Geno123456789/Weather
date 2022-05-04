@@ -17,8 +17,8 @@ class WeatherAPIComponent extends React.Component {
     
     render() {
         return <>
-            {!this.props ? <Preloader /> : null}
-            <Weather onCityChanged={this.onCityChanged} {...this.props} />
+            {this.props.isFetching ? <Preloader /> : <Weather onCityChanged={this.onCityChanged} {...this.props} />}
+           
         </>
     }
 }
@@ -28,7 +28,8 @@ const mapStateToProps = (state) => {
     return {
         data: state.data.data,
         town: state.data.town,
-        forecast: state.data.forecast
+        forecast: state.data.forecast,
+        isFetching: state.data.isFetching
     }
 };
 const mapDispatchToProps = (dispatch) => {

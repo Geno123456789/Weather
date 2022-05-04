@@ -2,13 +2,14 @@ import { weatherApi } from "../api/api";
 
 const ADD_CITY_NAME = 'ADD_CITY_NAME';
 const SET_DATA_WEATHER = 'SET_DATA_WEATHER';
-const SET_FORECAST = 'SET_FORECAST'
+const SET_FORECAST = 'SET_FORECAST';
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 const initialState = {
     town: 'Minsk',
     data: null,
-    forecast: null
-
+    forecast: null,
+    isFetching: true
 }
 
 const weatherReducer = (state = initialState, action) => {
@@ -27,7 +28,12 @@ const weatherReducer = (state = initialState, action) => {
                     return {
                         ...state,
                         forecast: action.forecast
-                    };      
+                    };   
+                    case TOGGLE_IS_FETCHING:
+                        return {
+                            ...state,
+                            isFetching: action.isFetching
+                        };        
         default:
             return state;
     }
@@ -37,28 +43,21 @@ const weatherReducer = (state = initialState, action) => {
 export const addCityName = (town) => ({ type: ADD_CITY_NAME, town });
 export const setDataWeather = (data) => ({ type: SET_DATA_WEATHER, data });
 export const setForecast = (forecast) => ({ type: SET_FORECAST, forecast });
+export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 
 export const getWeatherCity = (town) => {
     return async (dispatch) => {
         dispatch(addCityName(town));
+        dispatch(toggleIsFetching(true));
         const data = await weatherApi.getCityName(town);
         const response = await weatherApi.forWeekForecast(town);
-        dispatch(setForecast(response.data.list ))
-        // console.log(response.data.list);
+        dispatch(toggleIsFetching(false));
+        dispatch(setForecast(response.data.list));
         dispatch(addCityName(data.data.name));
         dispatch(setDataWeather(data.data));
 
     }
 }
-// export const getForecast = (forecast) => {
-//     return async (dispatch) => {
-//         const response = await weatherApi.forWeekForecast(forecast);
-//         console.log(response);
-//         dispatch(setForecast(response.data.list ));
-        
-//     }
-// }
-
 
 
 export default weatherReducer;
