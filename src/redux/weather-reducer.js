@@ -46,12 +46,14 @@ export const setForecast = (forecast) => ({ type: SET_FORECAST, forecast });
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 
 export const getWeatherCity = (town) => {
+    
     return async (dispatch) => {
         dispatch(addCityName(town));
         dispatch(toggleIsFetching(true));
-        const data = await weatherApi.getCityName(town);
-        const response = await weatherApi.forWeekForecast(town);
+        const data = await weatherApi.getCityName(town)
+        .catch(err => {alert('You entered the wrong city.Try again')});
         dispatch(toggleIsFetching(false));
+        const response = await weatherApi.forWeekForecast(town);
         dispatch(setForecast(response.data.list));
         dispatch(addCityName(data.data.name));
         dispatch(setDataWeather(data.data));

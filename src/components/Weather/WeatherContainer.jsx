@@ -14,11 +14,10 @@ class WeatherAPIComponent extends React.Component {
     onCityChanged = (town) => {
         this.props.getWeatherCity(town, this.props.town);
     }
-    
+
     render() {
         return <>
             {this.props.isFetching ? <Preloader /> : <Weather onCityChanged={this.onCityChanged} {...this.props} />}
-           
         </>
     }
 }
